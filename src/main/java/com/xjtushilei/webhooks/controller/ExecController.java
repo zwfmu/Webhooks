@@ -7,17 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @author shilei
+ * @author xiaofeng
  * @Date 2017/9/29.
  */
 @RestController
-public class Exec {
+public class ExecController {
     @Autowired
     private CommandInfoRepository commandInfoRepository;
 
     @RequestMapping(value = "/execLinux/{name}", method = RequestMethod.POST)
     public String execLinuxCommand(@PathVariable String name) {
-
         CommandInfo command = commandInfoRepository.findByName(name);
         String result =Cmd.execLinuxCmd(command.getCommand());
         return result;
@@ -25,7 +24,6 @@ public class Exec {
 
     @RequestMapping(value = "/execWin/{name}", method = RequestMethod.POST)
     public String execWinCommand(@PathVariable String name) {
-
         CommandInfo command = commandInfoRepository.findByName(name);
         String result =Cmd.execWindowsCmd(command.getCommand());
         return result;
@@ -33,7 +31,6 @@ public class Exec {
 
     @RequestMapping(value = "/test")
     public String test(@RequestParam(value = "hi", defaultValue = "nihao") String hi) {
-
         return "test(@RequestParam(value = \"hi\", defaultValue = \"nihao\")："+hi;
     }
 }

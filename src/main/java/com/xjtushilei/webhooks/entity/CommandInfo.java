@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 /**
- * @author shilei
+ * @author xiaofeng
  * @Date 2017/9/29.
  */
 @Entity
